@@ -1,2 +1,2 @@
-# Flutter BLoC Project Starter
+# Flutter BLoC Training (quiz app)
 
