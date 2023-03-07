@@ -7,6 +7,9 @@ const Color cherryRed = Color(0xffe8001d);
 const Color greyShadeLight = Color(0xFFE5E5E5);
 const Color greyLight = Color(0x0c000000);
 const Color white = Color(0xffffffff);
+const Color blue = Color(0xff007FDC);
+const Color darkBlue = Color(0xff123e6d);
+const Color darkerBlue = Color(0xff092e54);
 
 class TextStyles {
   static const notifierTextLabel = TextStyle(
