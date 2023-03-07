@@ -37,7 +37,9 @@ class CodegenLoader extends AssetLoader{
   "system": "системна",
   "light": "світла",
   "dark": "темна",
-  "resolution_aware_img": "Приклад використання зображення, яке враховує роздільну здатність екрану"
+  "resolution_aware_img": "Приклад використання зображення, яке враховує роздільну здатність екрану",
+  "true_false_quiz": "Правда чи ні",
+  "one_answer_quiz": "Одна відповідь"
 };
 static const Map<String,dynamic> en_US = {
   "app_bar": {
@@ -62,7 +64,9 @@ static const Map<String,dynamic> en_US = {
   "system": "system",
   "light": "light",
   "dark": "dark",
-  "resolution_aware_img": "Example of resolution-aware image usage"
+  "resolution_aware_img": "Example of resolution-aware image usage",
+  "true_false_quiz": "True or False Quiz",
+  "one_answer_quiz": "One Answer Quiz"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};
 }

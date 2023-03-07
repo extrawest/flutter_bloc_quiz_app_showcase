@@ -22,5 +22,7 @@
   "system": "system",
   "light": "light",
   "dark": "dark",
-  "resolution_aware_img": "Example of resolution-aware image usage"
+  "resolution_aware_img": "Example of resolution-aware image usage",
+  "true_false_quiz": "True or False Quiz",
+  "one_answer_quiz": "One Answer Quiz"
 }
