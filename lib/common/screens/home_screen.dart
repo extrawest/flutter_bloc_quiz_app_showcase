@@ -1,3 +1,4 @@
+import 'package:bloc_quiz_training/common/assets.dart';
 import 'package:bloc_quiz_training/common/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,29 +12,36 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Column(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Image.asset(
+                quizLogo,
+              ),
+            ),
+            Column(
               children: [
                 FilledButton(
                   onPressed: () {
                     context.go(pagesRoute);
                   },
-                  child: const Text('Go to List Of Pages'),
+                  child: const Text('True or False Quiz'),
                 ),
                 FilledButton(
                   onPressed: () {
                     context.read<ThemeBloc>().switchTheme();
                   },
-                  child: const Text('Switch Theme'),
+                  child: const Text('One Answer Quiz'),
                 ),
               ],
             ),
-          ),
-        ],
+            Container()
+          ],
+        ),
       ),
     );
   }
