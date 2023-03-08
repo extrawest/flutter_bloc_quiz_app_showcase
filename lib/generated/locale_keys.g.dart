@@ -18,5 +18,8 @@ abstract class  LocaleKeys {
   static const resolution_aware_img = 'resolution_aware_img';
   static const true_false_quiz = 'true_false_quiz';
   static const one_answer_quiz = 'one_answer_quiz';
+  static const history = 'history';
+  static const quiz_menu = 'quiz_menu';
+  static const settings = 'settings';
 
 }
