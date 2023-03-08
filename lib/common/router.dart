@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../home_screen/view/home_screen.dart';
+import '../one_answer_quiz_screen/view/one_answer_quiz_screen.dart';
 import 'screens/error_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/pages_list_screen.dart';
 import 'widgets/page_widget.dart';
 
 /* * * * * * * * * * * *
@@ -16,27 +16,30 @@ import 'widgets/page_widget.dart';
 *     /pages/test
 *
 * * * * * * * * * * * */
-const String homeRoute = '/home';
+const String homeScreenRoute = '/home';
+const String trueFalseScreenRoute = '/trueFalse';
+const String oneAnswerScreenRoute = '/oneAnswer';
 const String pagesRoute = '/pages';
 const String pagesDynamicRoute = ':id';
 const String firstPageRoute = '/pages/1';
 
 final goRouter = GoRouter(
-  initialLocation: homeRoute,
+  initialLocation: homeScreenRoute,
   errorBuilder: (context, state) => ErrorScreen(state.error),
+  debugLogDiagnostics: true,
   routes: [
     GoRoute(
-      path: homeRoute,
+      path: homeScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
         child: const HomeScreen(),
       ),
     ),
     GoRoute(
-      path: pagesRoute,
+      path: oneAnswerScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: const PagesListScreen(),
+        child: const OneAnswerQuizScreen(),
       ),
       routes: <RouteBase>[
         GoRoute(
