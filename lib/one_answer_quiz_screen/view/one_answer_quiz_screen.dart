@@ -2,12 +2,14 @@ import 'package:bloc_quiz_training/common/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class PagesListScreen extends StatelessWidget {
-  const PagesListScreen({Key? key}) : super(key: key);
+class OneAnswerQuizScreen extends StatelessWidget {
+  const OneAnswerQuizScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -15,15 +17,10 @@ class PagesListScreen extends StatelessWidget {
           children: [
             FilledButton(
               onPressed: () {
-                GoRouter.of(context).go(firstPageRoute);
+                context.pop();
               },
-              child: const Text('Go to $firstPageRoute'),
+              child: const Text('Go to $homeScreenRoute'),
             ),
-            FilledButton(
-                onPressed: () {
-                  context.go('/pages/test');
-                },
-                child: const Text('Go to /pages/test')),
           ],
         ),
       ),
