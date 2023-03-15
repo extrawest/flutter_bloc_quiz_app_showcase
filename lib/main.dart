@@ -15,6 +15,8 @@ import 'package:url_strategy/url_strategy.dart';
 import 'common/assets.dart';
 import 'common/services/database_boxes.dart';
 import 'common/utils/logger.dart';
+import 'features/one_answer_quiz/repositories/one_answer_quiz_repository.dart';
+import 'features/one_answer_quiz/services/one_answer_quiz_api_service.dart';
 import 'network/api_client.dart';
 
 const isProductionEnvKey = 'IS_PRODUCTION';
@@ -66,6 +68,13 @@ class _RepositoriesHolder extends StatelessWidget {
     // put your common repositories and services here
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider(
+          create: (context) => OneAnswerQuizRepositoryImpl(
+            oneAnswerQuizApiService: OneAnswerQuizApiServiceImpl(
+              ApiClientImpl(apiDomain: credentials.apiDomain),
+            ),
+          ),
+        ),
         RepositoryProvider(
           create: (context) => PostsRepositoryImpl(
             postsApiService: PostsApiServiceImpl(
