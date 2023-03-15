@@ -29,11 +29,13 @@ class RetryOnConnectionChangeInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     log.fine('onRequest: ${options.method}');
+    return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     log.fine('onResponse: ${response.data}');
+    return handler.next(response);
   }
 
   bool _shouldRetry(DioError err) {
