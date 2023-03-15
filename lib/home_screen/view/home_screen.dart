@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       opacity: opacity,
                       animation: animation,
                       onTap: () {
-                        context.push(pagesRoute);
+                        context.push(trueFalseScreenRoute);
                       },
                     ),
                     const SizedBox(
