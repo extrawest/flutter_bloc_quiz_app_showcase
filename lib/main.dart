@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -16,12 +17,16 @@ import 'common/assets.dart';
 import 'common/services/database_boxes.dart';
 import 'common/utils/logger.dart';
 import 'features/one_answer_quiz/repositories/one_answer_quiz_repository.dart';
+import 'features/one_answer_quiz/repositories/true_false_quiz_repository.dart';
 import 'features/one_answer_quiz/services/one_answer_quiz_api_service.dart';
+import 'features/true_false_quiz/services/true_false_quiz_api_service.dart';
 import 'network/api_client.dart';
 
 const isProductionEnvKey = 'IS_PRODUCTION';
 const englishLocale = Locale('en', 'US');
 const ukrainianLocale = Locale('uk', 'UA');
+
+GetIt getIt = GetIt.instance;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +39,8 @@ Future<void> main() async {
 
   final credentials = await loadCredentials();
   setupLogger();
+
+  getIt.registerSingleton<ApiClientImpl>(ApiClientImpl(apiDomain: credentials.apiDomain));
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
@@ -71,20 +78,27 @@ class _RepositoriesHolder extends StatelessWidget {
         RepositoryProvider(
           create: (context) => OneAnswerQuizRepositoryImpl(
             oneAnswerQuizApiService: OneAnswerQuizApiServiceImpl(
-              ApiClientImpl(apiDomain: credentials.apiDomain),
+              getIt<ApiClientImpl>(),
+            ),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => TrueFalseQuizRepositoryImpl(
+            trueFalseQuizApiService: TrueFalseQuizApiServiceImpl(
+              getIt<ApiClientImpl>(),
             ),
           ),
         ),
         RepositoryProvider(
           create: (context) => PostsRepositoryImpl(
             postsApiService: PostsApiServiceImpl(
-              ApiClientImpl(apiDomain: credentials.apiDomain),
+              getIt<ApiClientImpl>(),
             ),
           ),
         ),
-        RepositoryProvider.value(
-          value: ApiClientImpl(apiDomain: credentials.apiDomain),
-        ),
+        // RepositoryProvider.value(
+        //   value: ApiClientImpl(apiDomain: credentials.apiDomain),
+        // ),
       ],
       child: Builder(builder: (context) => child),
     );
