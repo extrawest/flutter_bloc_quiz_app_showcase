@@ -35,7 +35,7 @@ final goRouter = GoRouter(
       path: trueFalseScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: const TrueFalseQuizScreen(),
+        child:  TrueFalseQuizScreen(),
       ),
     ),
   ],
