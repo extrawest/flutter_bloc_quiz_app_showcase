@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../features/theme/theme_info.dart';
 import '../../generated/locale_keys.g.dart';
+import '../router.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -30,12 +32,14 @@ class DrawerWidget extends StatelessWidget {
             title: Text(tr(LocaleKeys.true_false_quiz)),
             onTap: () {
               Navigator.pop(context);
+              context.push(trueFalseScreenRoute);
             },
           ),
           ListTile(
             title: Text(tr(LocaleKeys.one_answer_quiz)),
             onTap: () {
               Navigator.pop(context);
+              context.push(oneAnswerScreenRoute);
             },
           ),
           ListTile(
