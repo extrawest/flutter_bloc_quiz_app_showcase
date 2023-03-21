@@ -23,6 +23,7 @@ mixin _$OneAnswerQuiz {
   int? get id => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   List<String>? get answers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rightAnswer')
   String? get rightAnswer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,10 @@ abstract class $OneAnswerQuizCopyWith<$Res> {
       _$OneAnswerQuizCopyWithImpl<$Res, OneAnswerQuiz>;
   @useResult
   $Res call(
-      {int? id, String? question, List<String>? answers, String? rightAnswer});
+      {int? id,
+      String? question,
+      List<String>? answers,
+      @JsonKey(name: 'rightAnswer') String? rightAnswer});
 }
 
 /// @nodoc
@@ -89,7 +93,10 @@ abstract class _$$_OneAnswerQuizCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id, String? question, List<String>? answers, String? rightAnswer});
+      {int? id,
+      String? question,
+      List<String>? answers,
+      @JsonKey(name: 'rightAnswer') String? rightAnswer});
 }
 
 /// @nodoc
@@ -133,10 +140,10 @@ class __$$_OneAnswerQuizCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OneAnswerQuiz implements _OneAnswerQuiz {
   const _$_OneAnswerQuiz(
-      {required this.id,
-      required this.question,
-      required final List<String>? answers,
-      required this.rightAnswer})
+      {this.id,
+      this.question,
+      final List<String>? answers,
+      @JsonKey(name: 'rightAnswer') this.rightAnswer})
       : _answers = answers;
 
   factory _$_OneAnswerQuiz.fromJson(Map<String, dynamic> json) =>
@@ -157,6 +164,7 @@ class _$_OneAnswerQuiz implements _OneAnswerQuiz {
   }
 
   @override
+  @JsonKey(name: 'rightAnswer')
   final String? rightAnswer;
 
   @override
@@ -198,10 +206,11 @@ class _$_OneAnswerQuiz implements _OneAnswerQuiz {
 
 abstract class _OneAnswerQuiz implements OneAnswerQuiz {
   const factory _OneAnswerQuiz(
-      {required final int? id,
-      required final String? question,
-      required final List<String>? answers,
-      required final String? rightAnswer}) = _$_OneAnswerQuiz;
+          {final int? id,
+          final String? question,
+          final List<String>? answers,
+          @JsonKey(name: 'rightAnswer') final String? rightAnswer}) =
+      _$_OneAnswerQuiz;
 
   factory _OneAnswerQuiz.fromJson(Map<String, dynamic> json) =
       _$_OneAnswerQuiz.fromJson;
@@ -213,6 +222,7 @@ abstract class _OneAnswerQuiz implements OneAnswerQuiz {
   @override
   List<String>? get answers;
   @override
+  @JsonKey(name: 'rightAnswer')
   String? get rightAnswer;
   @override
   @JsonKey(ignore: true)

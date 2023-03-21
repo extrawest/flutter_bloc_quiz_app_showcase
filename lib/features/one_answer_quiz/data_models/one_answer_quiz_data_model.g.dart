@@ -12,7 +12,7 @@ _$_OneAnswerQuiz _$$_OneAnswerQuizFromJson(Map<String, dynamic> json) =>
       question: json['question'] as String?,
       answers:
           (json['answers'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      rightAnswer: json['right_answer'] as String?,
+      rightAnswer: json['rightAnswer'] as String?,
     );
 
 Map<String, dynamic> _$$_OneAnswerQuizToJson(_$_OneAnswerQuiz instance) =>
@@ -20,5 +20,5 @@ Map<String, dynamic> _$$_OneAnswerQuizToJson(_$_OneAnswerQuiz instance) =>
       'id': instance.id,
       'question': instance.question,
       'answers': instance.answers,
-      'right_answer': instance.rightAnswer,
+      'rightAnswer': instance.rightAnswer,
     };

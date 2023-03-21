@@ -20,9 +20,10 @@ TrueFalseQuiz _$TrueFalseQuizFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TrueFalseQuiz {
-  int get id => throw _privateConstructorUsedError;
-  String get question => throw _privateConstructorUsedError;
-  bool get rightAnswer => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get question => throw _privateConstructorUsedError;
+  @JsonKey(name: 'rightAnswer')
+  bool? get rightAnswer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,10 @@ abstract class $TrueFalseQuizCopyWith<$Res> {
           TrueFalseQuiz value, $Res Function(TrueFalseQuiz) then) =
       _$TrueFalseQuizCopyWithImpl<$Res, TrueFalseQuiz>;
   @useResult
-  $Res call({int id, String question, bool rightAnswer});
+  $Res call(
+      {int? id,
+      String? question,
+      @JsonKey(name: 'rightAnswer') bool? rightAnswer});
 }
 
 /// @nodoc
@@ -52,23 +56,23 @@ class _$TrueFalseQuizCopyWithImpl<$Res, $Val extends TrueFalseQuiz>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? question = null,
-    Object? rightAnswer = null,
+    Object? id = freezed,
+    Object? question = freezed,
+    Object? rightAnswer = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      question: null == question
+              as int?,
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String,
-      rightAnswer: null == rightAnswer
+              as String?,
+      rightAnswer: freezed == rightAnswer
           ? _value.rightAnswer
           : rightAnswer // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -81,7 +85,10 @@ abstract class _$$_TrueFalseQuizCopyWith<$Res>
       __$$_TrueFalseQuizCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String question, bool rightAnswer});
+  $Res call(
+      {int? id,
+      String? question,
+      @JsonKey(name: 'rightAnswer') bool? rightAnswer});
 }
 
 /// @nodoc
@@ -95,23 +102,23 @@ class __$$_TrueFalseQuizCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? question = null,
-    Object? rightAnswer = null,
+    Object? id = freezed,
+    Object? question = freezed,
+    Object? rightAnswer = freezed,
   }) {
     return _then(_$_TrueFalseQuiz(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      question: null == question
+              as int?,
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String,
-      rightAnswer: null == rightAnswer
+              as String?,
+      rightAnswer: freezed == rightAnswer
           ? _value.rightAnswer
           : rightAnswer // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -120,17 +127,18 @@ class __$$_TrueFalseQuizCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TrueFalseQuiz implements _TrueFalseQuiz {
   const _$_TrueFalseQuiz(
-      {required this.id, required this.question, required this.rightAnswer});
+      {this.id, this.question, @JsonKey(name: 'rightAnswer') this.rightAnswer});
 
   factory _$_TrueFalseQuiz.fromJson(Map<String, dynamic> json) =>
       _$$_TrueFalseQuizFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String question;
+  final String? question;
   @override
-  final bool rightAnswer;
+  @JsonKey(name: 'rightAnswer')
+  final bool? rightAnswer;
 
   @override
   String toString() {
@@ -169,19 +177,21 @@ class _$_TrueFalseQuiz implements _TrueFalseQuiz {
 
 abstract class _TrueFalseQuiz implements TrueFalseQuiz {
   const factory _TrueFalseQuiz(
-      {required final int id,
-      required final String question,
-      required final bool rightAnswer}) = _$_TrueFalseQuiz;
+          {final int? id,
+          final String? question,
+          @JsonKey(name: 'rightAnswer') final bool? rightAnswer}) =
+      _$_TrueFalseQuiz;
 
   factory _TrueFalseQuiz.fromJson(Map<String, dynamic> json) =
       _$_TrueFalseQuiz.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get question;
+  String? get question;
   @override
-  bool get rightAnswer;
+  @JsonKey(name: 'rightAnswer')
+  bool? get rightAnswer;
   @override
   @JsonKey(ignore: true)
   _$$_TrueFalseQuizCopyWith<_$_TrueFalseQuiz> get copyWith =>
