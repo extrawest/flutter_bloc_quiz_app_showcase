@@ -32,7 +32,7 @@ class TrueFalseQuizView extends StatelessWidget {
         );
       }
       if (state.actualQuestion! < state.quizQuestions.length) {
-        return TrueFalseWidget(quiz: state.quizQuestions[state.actualQuestion!]);
+        return TrueFalseQuestionWidget(quiz: state.quizQuestions[state.actualQuestion!]);
       } else {
         return const ResultsWidget();
       }
