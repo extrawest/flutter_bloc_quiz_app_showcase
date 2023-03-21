@@ -10,6 +10,8 @@ const Color white = Color(0xffffffff);
 const Color blue = Color(0xff007FDC);
 const Color darkBlue = Color(0xff123e6d);
 const Color darkerBlue = Color(0xff092e54);
+const Color textBlack = Color(0xff1C1C3B);
+const Color simpleGray = Color(0xffB3B3C9);
 
 class TextStyles {
   static const notifierTextLabel = TextStyle(
@@ -18,6 +20,13 @@ class TextStyles {
     fontWeight: FontWeight.w300,
   );
 }
+
+final buttonText = TextStyle(
+  fontSize: 14,
+  color: blackShade,
+  fontFamily: GoogleFonts.poppins().fontFamily,
+  fontWeight: FontWeight.w600,
+);
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
