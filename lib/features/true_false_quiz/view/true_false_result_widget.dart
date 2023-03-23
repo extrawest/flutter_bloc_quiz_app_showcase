@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/true_false_bloc.dart';
 
-class ResultsWidget extends StatelessWidget {
-  const ResultsWidget({Key? key}) : super(key: key);
+class TrueFalseResultsWidget extends StatelessWidget {
+  const TrueFalseResultsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:bloc_quiz_training/features/true_false_quiz/view/result_widget.dart';
+import 'package:bloc_quiz_training/features/true_false_quiz/view/true_false_result_widget.dart';
 import 'package:bloc_quiz_training/features/true_false_quiz/view/true_false_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +34,7 @@ class TrueFalseQuizView extends StatelessWidget {
       if (state.actualQuestion! < state.quizQuestions.length) {
         return TrueFalseQuestionWidget(quiz: state.quizQuestions[state.actualQuestion!]);
       } else {
-        return const ResultsWidget();
+        return const TrueFalseResultsWidget();
       }
     });
   }
