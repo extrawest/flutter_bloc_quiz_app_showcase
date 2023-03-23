@@ -12,6 +12,8 @@ class OneAnswerBloc extends Bloc<OneAnswerEvent, OneAnswerState> {
 
   OneAnswerBloc({required this.oneAnswerQuizRepository}) : super(OneAnswerInitial()) {
     on<OneAnswerFetchEvent>(_onQuizQuestionFetched);
+    on<NextQuestionEvent>(_nextQuestion);
+    on<AnswerOnQuestionEvent>(_answeredOnQuestion);
   }
 
   Future<void> _onQuizQuestionFetched(OneAnswerFetchEvent event, Emitter<OneAnswerState> emit) async {
@@ -39,5 +41,22 @@ class OneAnswerBloc extends Bloc<OneAnswerEvent, OneAnswerState> {
         ),
       );
     }
+  }
+
+  Future<void> _nextQuestion(NextQuestionEvent event, Emitter<OneAnswerState> emit) async {
+    if (event.actualQuestion == null) {
+      emit(
+        state.copyWith(actualQuestion: 0),
+      );
+    } else {
+      emit(
+        state.copyWith(actualQuestion: event.actualQuestion! + 1),
+      );
+    }
+  }
+
+  Future<void> _answeredOnQuestion(AnswerOnQuestionEvent event, Emitter<OneAnswerState> emit) async {
+    emit(state.copyWith(
+        answeredQuestions: List.of(state.answeredQuestions)..add({'id': event.id, 'answer': event.answer})));
   }
 }
