@@ -29,7 +29,6 @@ class GithubSearchBloc extends Bloc<GithubSearchEvent, GithubSearchState> {
     TextChanged event,
     Emitter<GithubSearchState> emit,
   ) async {
-    print('AAAA KEKW');
     final searchTerm = event.text;
 
     if (searchTerm.isEmpty) {
