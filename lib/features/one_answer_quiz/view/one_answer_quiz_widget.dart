@@ -1,87 +1,104 @@
 import 'package:bloc_quiz_training/features/one_answer_quiz/bloc/one_answer_bloc.dart';
-import 'package:bloc_quiz_training/features/one_answer_quiz/cubit/one_answer_button_cubit.dart';
+import 'package:bloc_quiz_training/features/one_answer_quiz/cubit/one_answer_cubit.dart';
 import 'package:bloc_quiz_training/features/one_answer_quiz/data_models/one_answer_quiz_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OneAnswerQuizWidget extends StatelessWidget {
+import 'bottom_button.dart';
+
+class OneAnswerQuizWidget extends StatefulWidget {
   final OneAnswerQuiz quiz;
 
   const OneAnswerQuizWidget({Key? key, required this.quiz}) : super(key: key);
 
   @override
+  State<OneAnswerQuizWidget> createState() => _OneAnswerQuizWidgetState();
+}
+
+class _OneAnswerQuizWidgetState extends State<OneAnswerQuizWidget> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<Offset> offset;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+
+    offset = Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final buttonCubit = context.read<OneAnswerButtonCubit>();
-    return BlocConsumer<OneAnswerButtonCubit, OneAnswerButtonState>(
-      listenWhen: (prev, current) {
-        if (prev is OneAnswerButtonSelected && current is OneAnswerButtonSelected) {
-          return false;
-        } else {
-          return true;
-        }
-      },
+    final buttonCubit = context.read<OneAnswerCubit>();
+    return BlocConsumer<OneAnswerCubit, OneAnswerCubitState>(
       listener: (context, state) {
         if (state is OneAnswerButtonSelected) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            dismissDirection: DismissDirection.none,
-            backgroundColor: Colors.blue,
-            content: BlocProvider.value(
-              value: BlocProvider.of<OneAnswerButtonCubit>(context),
-              child: BlocBuilder<OneAnswerButtonCubit, OneAnswerButtonState>(
-                builder: (context, state) {
-                  return GestureDetector(
-                      onTap: () {
-                        context.read<OneAnswerBloc>()
-                          ..add(AnswerOnQuestionEvent(id: quiz.id!, answer: quiz.answers![state.index!]))
-                          ..add(NextQuestionEvent(context.read<OneAnswerBloc>().state.actualQuestion));
-                        buttonCubit.unselectAction();
-                      },
-                      child: Text(state.index != null
-                          ? 'Write down the answer(${quiz.answers![state.index!]})'
-                          : 'The answer is recorded'));
-                },
-              ),
-            ),
-            duration: const Duration(days: 1),
-          ));
+          controller.forward();
         }
         if (state is OneAnswerButtonInitial) {
-          ScaffoldMessenger.of(context)
-            ..clearSnackBars()
-            ..hideCurrentSnackBar();
+          controller.reverse();
         }
       },
       builder: (context, state) {
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(quiz.question ?? 'Something went wrong'),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: quiz.answers!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4),
-                          child: Text(
-                            quiz.answers![index],
-                            style: TextStyle(color: state.index == index ? Colors.red : Colors.black),
-                          ),
-                        ),
-                        onTap: () {
-                          buttonCubit.selectAnswer(index: index);
+        return Stack(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(widget.quiz.question ?? 'Something went wrong'),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: widget.quiz.answers!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return GestureDetector(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              child: Text(
+                                widget.quiz.answers![index].answer!,
+                                style: TextStyle(color: state.index == index ? Colors.blue : Colors.black),
+                              ),
+                            ),
+                            onTap: () {
+                              buttonCubit.selectAnswer(index: index);
+                            },
+                          );
                         },
-                      );
-                    },
-                  ),
-                )
-              ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SlideTransition(
+                position: offset,
+                child: BottomButton(
+                    title: state.index != null ? widget.quiz.answers![state.index!].answer! : 'Validating...',
+                    callBack: state.index != null
+                        ? () {
+                            context.read<OneAnswerBloc>()
+                              ..add(AnswerOnQuestionEvent(
+                                  id: widget.quiz.id!, answer: widget.quiz.answers![state.index!].answer!))
+                              ..add(NextQuestionEvent(context.read<OneAnswerBloc>().state.actualQuestion));
+                            buttonCubit.initial();
+                          }
+                        : () {}),
+              ),
+            )
+          ],
         );
       },
     );
