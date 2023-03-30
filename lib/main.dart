@@ -16,7 +16,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'common/assets.dart';
 import 'common/services/database_boxes.dart';
 import 'common/utils/logger.dart';
-import 'features/one_answer_quiz/repositories/one_answer_quiz_repository.dart';
+import 'features/true_false_quiz/repositories/one_answer_quiz_repository.dart';
 import 'features/one_answer_quiz/repositories/true_false_quiz_repository.dart';
 import 'features/one_answer_quiz/services/one_answer_quiz_api_service.dart';
 import 'features/true_false_quiz/services/true_false_quiz_api_service.dart';
