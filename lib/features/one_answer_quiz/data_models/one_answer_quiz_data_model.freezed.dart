@@ -22,7 +22,8 @@ OneAnswerQuiz _$OneAnswerQuizFromJson(Map<String, dynamic> json) {
 mixin _$OneAnswerQuiz {
   int? get id => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
-  List<String>? get answers => throw _privateConstructorUsedError;
+  @AnswersListResponseConverter()
+  List<Answer>? get answers => throw _privateConstructorUsedError;
   @JsonKey(name: 'rightAnswer')
   String? get rightAnswer => throw _privateConstructorUsedError;
 
@@ -41,7 +42,7 @@ abstract class $OneAnswerQuizCopyWith<$Res> {
   $Res call(
       {int? id,
       String? question,
-      List<String>? answers,
+      @AnswersListResponseConverter() List<Answer>? answers,
       @JsonKey(name: 'rightAnswer') String? rightAnswer});
 }
 
@@ -75,7 +76,7 @@ class _$OneAnswerQuizCopyWithImpl<$Res, $Val extends OneAnswerQuiz>
       answers: freezed == answers
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<Answer>?,
       rightAnswer: freezed == rightAnswer
           ? _value.rightAnswer
           : rightAnswer // ignore: cast_nullable_to_non_nullable
@@ -95,7 +96,7 @@ abstract class _$$_OneAnswerQuizCopyWith<$Res>
   $Res call(
       {int? id,
       String? question,
-      List<String>? answers,
+      @AnswersListResponseConverter() List<Answer>? answers,
       @JsonKey(name: 'rightAnswer') String? rightAnswer});
 }
 
@@ -127,7 +128,7 @@ class __$$_OneAnswerQuizCopyWithImpl<$Res>
       answers: freezed == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<Answer>?,
       rightAnswer: freezed == rightAnswer
           ? _value.rightAnswer
           : rightAnswer // ignore: cast_nullable_to_non_nullable
@@ -142,7 +143,7 @@ class _$_OneAnswerQuiz implements _OneAnswerQuiz {
   const _$_OneAnswerQuiz(
       {this.id,
       this.question,
-      final List<String>? answers,
+      @AnswersListResponseConverter() final List<Answer>? answers,
       @JsonKey(name: 'rightAnswer') this.rightAnswer})
       : _answers = answers;
 
@@ -153,9 +154,10 @@ class _$_OneAnswerQuiz implements _OneAnswerQuiz {
   final int? id;
   @override
   final String? question;
-  final List<String>? _answers;
+  final List<Answer>? _answers;
   @override
-  List<String>? get answers {
+  @AnswersListResponseConverter()
+  List<Answer>? get answers {
     final value = _answers;
     if (value == null) return null;
     if (_answers is EqualUnmodifiableListView) return _answers;
@@ -208,7 +210,7 @@ abstract class _OneAnswerQuiz implements OneAnswerQuiz {
   const factory _OneAnswerQuiz(
           {final int? id,
           final String? question,
-          final List<String>? answers,
+          @AnswersListResponseConverter() final List<Answer>? answers,
           @JsonKey(name: 'rightAnswer') final String? rightAnswer}) =
       _$_OneAnswerQuiz;
 
@@ -220,7 +222,8 @@ abstract class _OneAnswerQuiz implements OneAnswerQuiz {
   @override
   String? get question;
   @override
-  List<String>? get answers;
+  @AnswersListResponseConverter()
+  List<Answer>? get answers;
   @override
   @JsonKey(name: 'rightAnswer')
   String? get rightAnswer;

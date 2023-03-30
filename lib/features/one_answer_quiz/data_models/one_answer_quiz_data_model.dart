@@ -1,4 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'answer.dart';
+import 'custom_response_converter.dart';
+
 part 'one_answer_quiz_data_model.freezed.dart';
 part 'one_answer_quiz_data_model.g.dart';
 
@@ -7,9 +11,9 @@ class OneAnswerQuiz with _$OneAnswerQuiz {
   const factory OneAnswerQuiz({
     int? id,
     String? question,
-    List<String>? answers,
+    @AnswersListResponseConverter() List<Answer>? answers,
     @JsonKey(name: 'rightAnswer') String? rightAnswer,
   }) = _OneAnswerQuiz;
 
-  factory OneAnswerQuiz.fromJson(Map<String, Object?> json) => _$OneAnswerQuizFromJson(json);
+  factory OneAnswerQuiz.fromJson(Map<String, dynamic> json) => _$OneAnswerQuizFromJson(json);
 }
