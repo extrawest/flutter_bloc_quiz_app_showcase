@@ -1,5 +1,5 @@
 import 'package:bloc_quiz_training/features/one_answer_quiz/bloc/one_answer_bloc.dart';
-import 'package:bloc_quiz_training/features/one_answer_quiz/cubit/one_answer_button_cubit.dart';
+import 'package:bloc_quiz_training/features/one_answer_quiz/cubit/one_answer_cubit.dart';
 import 'package:bloc_quiz_training/features/one_answer_quiz/view/one_answer_quiz_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,16 +14,16 @@ class OneAnswerQuizScreen extends StatelessWidget {
               OneAnswerBloc(oneAnswerQuizRepository: RepositoryProvider.of(context))
                 ..add(OneAnswerFetchEvent())),
           BlocProvider(
-            create: (context) => OneAnswerButtonCubit(),
+            create: (context) => OneAnswerCubit(),
           )
         ],
         child: Scaffold(
           appBar: AppBar(
-            leading: BlocBuilder<OneAnswerButtonCubit, OneAnswerButtonState>(
+            leading: BlocBuilder<OneAnswerCubit, OneAnswerCubitState>(
               builder: (context, state) {
                 return IconButton(
                   onPressed: () {
-                    context.read<OneAnswerButtonCubit>().unselectAction();
+                    context.read<OneAnswerCubit>().initial();
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.arrow_back_rounded),
