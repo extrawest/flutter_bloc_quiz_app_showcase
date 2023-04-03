@@ -2,7 +2,8 @@ import 'package:bloc_quiz_training/features/true_false_quiz/data_models/true_fal
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../one_answer_quiz/repositories/true_false_quiz_repository.dart';
+import '../../storage/data_models/quiz_result_model.dart';
+import '../repositories/true_false_quiz_repository.dart';
 
 part 'true_false_event.dart';
 part 'true_false_state.dart';
@@ -29,7 +30,6 @@ class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
         state.copyWith(
           status: TrueFalseStatus.success,
           quizQuestions: List.of(state.quizQuestions)..addAll(questions),
-          hasReachedMax: false,
         ),
       );
     } catch (e, _) {
@@ -56,7 +56,14 @@ class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
   }
 
   Future<void> _answeredOnQuestion(AnswerOnQuestionEvent event, Emitter<TrueFalseState> emit) async {
+    final isRightAnswer = event.answer == event.rightAnswer;
     emit(state.copyWith(
-        answeredQuestions: List.of(state.answeredQuestions)..add({'id': event.id, 'answer': event.answer})));
+        rightAnswers: isRightAnswer ? state.rightAnswers + 1 : state.rightAnswers,
+        wrongAnswers: !isRightAnswer ? state.wrongAnswers + 1 : state.wrongAnswers,
+        answeredQuestions: List.of(state.answeredQuestions)
+          ..add({
+            'id': event.id,
+            'answer': event.answer,
+          })));
   }
 }
