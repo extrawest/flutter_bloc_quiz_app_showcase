@@ -1,6 +1,6 @@
 import 'package:bloc_quiz_training/features/true_false_quiz/data_models/true_false_quiz_data_model.dart';
 
-import '../../true_false_quiz/services/true_false_quiz_api_service.dart';
+import '../services/true_false_quiz_api_service.dart';
 
 abstract class TrueFalseQuizRepository {
   final TrueFalseQuizApiService trueFalseQuizApiService;
