@@ -35,9 +35,7 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                       onPressed: () {
                         context.read<TrueFalseBloc>()
                           ..add(AnswerOnQuestionEvent(
-                            id: widget.quiz.id!,
-                            answer: true,
-                          ))
+                              id: widget.quiz.id!, answer: true, rightAnswer: widget.quiz.rightAnswer!))
                           ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
                       },
                       title: 'True'),
@@ -53,9 +51,7 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                       onPressed: () {
                         context.read<TrueFalseBloc>()
                           ..add(AnswerOnQuestionEvent(
-                            id: widget.quiz.id!,
-                            answer: false,
-                          ))
+                              id: widget.quiz.id!, answer: false, rightAnswer: widget.quiz.rightAnswer!))
                           ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
                       },
                       title: 'False'),
