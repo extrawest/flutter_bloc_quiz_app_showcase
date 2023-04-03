@@ -1,4 +1,5 @@
 import 'package:bloc_quiz_training/common/utils/get_flavor.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../assets.dart';
@@ -68,3 +69,5 @@ Iterable<E> indexedMap<E, T>(Iterable<T> items, E Function(int index, T item) f)
     index = index + 1;
   }
 }
+
+DateFormat dateFormat = DateFormat('dd.MM.yyyy HH:mm');
