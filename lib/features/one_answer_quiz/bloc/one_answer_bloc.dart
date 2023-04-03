@@ -57,7 +57,10 @@ class OneAnswerBloc extends Bloc<OneAnswerEvent, OneAnswerState> {
   }
 
   Future<void> _answeredOnQuestion(AnswerOnQuestionEvent event, Emitter<OneAnswerState> emit) async {
+    final isRightAnswer = event.answer == event.rightAnswer;
     emit(state.copyWith(
+        rightAnswers: isRightAnswer ? state.rightAnswers + 1 : state.rightAnswers,
+        wrongAnswers: !isRightAnswer ? state.wrongAnswers + 1 : state.wrongAnswers,
         answeredQuestions: List.of(state.answeredQuestions)..add({'id': event.id, 'answer': event.answer})));
   }
 }
