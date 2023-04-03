@@ -8,6 +8,7 @@ class TrueFalseQuiz with _$TrueFalseQuiz {
   const factory TrueFalseQuiz({
     int? id,
     String? question,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'rightAnswer') bool? rightAnswer,
   }) = _TrueFalseQuiz;
 

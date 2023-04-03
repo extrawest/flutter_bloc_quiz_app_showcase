@@ -21,7 +21,8 @@ TrueFalseQuiz _$TrueFalseQuizFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TrueFalseQuiz {
   int? get id => throw _privateConstructorUsedError;
-  String? get question => throw _privateConstructorUsedError;
+  String? get question =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'rightAnswer')
   bool? get rightAnswer => throw _privateConstructorUsedError;
 
@@ -136,6 +137,7 @@ class _$_TrueFalseQuiz implements _TrueFalseQuiz {
   final int? id;
   @override
   final String? question;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'rightAnswer')
   final bool? rightAnswer;
@@ -189,7 +191,7 @@ abstract class _TrueFalseQuiz implements TrueFalseQuiz {
   int? get id;
   @override
   String? get question;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'rightAnswer')
   bool? get rightAnswer;
   @override
