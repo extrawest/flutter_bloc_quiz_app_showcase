@@ -16,6 +16,9 @@ class NextQuestionEvent extends OneAnswerEvent {
 class AnswerOnQuestionEvent extends OneAnswerEvent {
   final int id;
   final String answer;
+  final String rightAnswer;
 
-  AnswerOnQuestionEvent({required this.id, required this.answer});
+  AnswerOnQuestionEvent({required this.id, required this.answer, required this.rightAnswer});
+  @override
+  List<Object> get props => [id,answer,rightAnswer];
 }
