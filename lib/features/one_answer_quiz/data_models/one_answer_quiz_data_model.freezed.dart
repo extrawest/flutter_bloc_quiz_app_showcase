@@ -23,7 +23,8 @@ mixin _$OneAnswerQuiz {
   int? get id => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   @AnswersListResponseConverter()
-  List<Answer>? get answers => throw _privateConstructorUsedError;
+  List<Answer>? get answers =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'rightAnswer')
   String? get rightAnswer => throw _privateConstructorUsedError;
 
@@ -165,6 +166,7 @@ class _$_OneAnswerQuiz implements _OneAnswerQuiz {
     return EqualUnmodifiableListView(value);
   }
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'rightAnswer')
   final String? rightAnswer;
@@ -224,7 +226,7 @@ abstract class _OneAnswerQuiz implements OneAnswerQuiz {
   @override
   @AnswersListResponseConverter()
   List<Answer>? get answers;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'rightAnswer')
   String? get rightAnswer;
   @override

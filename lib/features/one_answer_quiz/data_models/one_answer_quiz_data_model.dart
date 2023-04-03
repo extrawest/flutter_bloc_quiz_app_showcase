@@ -12,6 +12,7 @@ class OneAnswerQuiz with _$OneAnswerQuiz {
     int? id,
     String? question,
     @AnswersListResponseConverter() List<Answer>? answers,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'rightAnswer') String? rightAnswer,
   }) = _OneAnswerQuiz;
 
