@@ -7,6 +7,9 @@ class TrueFalseState extends Equatable {
   final List<TrueFalseQuiz> quizQuestions;
   final String? errorMessage;
   final int? actualQuestion;
+  final int rightAnswers;
+  final int wrongAnswers;
+  final QuizType? quizType;
   final List<Map<String, dynamic>> answeredQuestions;
 
   const TrueFalseState(
@@ -14,6 +17,9 @@ class TrueFalseState extends Equatable {
       this.quizQuestions = const <TrueFalseQuiz>[],
       this.errorMessage,
       this.actualQuestion,
+      this.rightAnswers = 0,
+      this.wrongAnswers = 0,
+      this.quizType = QuizType.none,
       this.answeredQuestions = const []});
 
   TrueFalseState copyWith(
@@ -22,17 +28,23 @@ class TrueFalseState extends Equatable {
       bool? hasReachedMax,
       String? errorMessage,
       int? actualQuestion,
+      int? rightAnswers,
+      int? wrongAnswers,
+      QuizType? quizType,
       List<Map<String, dynamic>>? answeredQuestions}) {
     return TrueFalseState(
         status: status ?? this.status,
         quizQuestions: quizQuestions ?? this.quizQuestions,
         errorMessage: errorMessage ?? this.errorMessage,
         actualQuestion: actualQuestion ?? this.actualQuestion,
-        answeredQuestions: answeredQuestions ?? this.answeredQuestions);
+        rightAnswers: rightAnswers ?? this.rightAnswers,
+        wrongAnswers: wrongAnswers ?? this.wrongAnswers,
+        answeredQuestions: answeredQuestions ?? this.answeredQuestions,
+        quizType: quizType ?? this.quizType);
   }
 
   @override
-  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions];
+  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions, rightAnswers, wrongAnswers];
 }
 
 class TrueFalseInitial extends TrueFalseState {}
