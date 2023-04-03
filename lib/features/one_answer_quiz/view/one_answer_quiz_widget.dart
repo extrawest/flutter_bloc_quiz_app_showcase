@@ -91,7 +91,9 @@ class _OneAnswerQuizWidgetState extends State<OneAnswerQuizWidget> with SingleTi
                         ? () {
                             context.read<OneAnswerBloc>()
                               ..add(AnswerOnQuestionEvent(
-                                  id: widget.quiz.id!, answer: widget.quiz.answers![state.index!].answer!))
+                                  id: widget.quiz.id!,
+                                  answer: widget.quiz.answers![state.index!].answer!,
+                                  rightAnswer: widget.quiz.rightAnswer!))
                               ..add(NextQuestionEvent(context.read<OneAnswerBloc>().state.actualQuestion));
                             buttonCubit.initial();
                           }
