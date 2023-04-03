@@ -2,7 +2,7 @@ import 'package:bloc_quiz_training/features/one_answer_quiz/data_models/one_answ
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../true_false_quiz/repositories/one_answer_quiz_repository.dart';
+import '../repositories/one_answer_quiz_repository.dart';
 
 part 'one_answer_event.dart';
 part 'one_answer_state.dart';
