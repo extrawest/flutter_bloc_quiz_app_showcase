@@ -16,9 +16,11 @@ import 'package:url_strategy/url_strategy.dart';
 import 'common/assets.dart';
 import 'common/services/database_boxes.dart';
 import 'common/utils/logger.dart';
-import 'features/true_false_quiz/repositories/one_answer_quiz_repository.dart';
-import 'features/one_answer_quiz/repositories/true_false_quiz_repository.dart';
+import 'features/one_answer_quiz/repositories/one_answer_quiz_repository.dart';
 import 'features/one_answer_quiz/services/one_answer_quiz_api_service.dart';
+import 'features/storage/data_models/quiz_result_model.dart';
+import 'features/storage/quiz_storage_bloc.dart';
+import 'features/true_false_quiz/repositories/true_false_quiz_repository.dart';
 import 'features/true_false_quiz/services/true_false_quiz_api_service.dart';
 import 'network/api_client.dart';
 
@@ -35,7 +37,11 @@ Future<void> main() async {
   setPathUrlStrategy();
 
   await Hive.initFlutter();
+  Hive.registerAdapter(SavedQuizAdapter());
+  Hive.registerAdapter(QuizTypeAdapter());
+
   final themeBox = await Hive.openBox(ThemeBox.name);
+  final quizBox = await Hive.openBox(QuizBox.name);
 
   final credentials = await loadCredentials();
   setupLogger();
@@ -51,8 +57,15 @@ Future<void> main() async {
     supportedLocales: const [englishLocale, ukrainianLocale],
     path: translationsFolderPath,
     fallbackLocale: englishLocale,
-    child: BlocProvider(
-      create: (context) => ThemeBloc(themeBox)..add(const InitTheme()),
+    child: MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ThemeBloc(themeBox)..add(const InitTheme()),
+        ),
+        BlocProvider(
+          create: (context) => QuizStorageBloc(quizBox)..add(QuizStorageReadEvent()),
+        ),
+      ],
       child: _RepositoriesHolder(credentials, child: const Application()),
     ),
   );
