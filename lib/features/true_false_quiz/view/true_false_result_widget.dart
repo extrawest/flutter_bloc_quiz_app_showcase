@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../common/widgets/base_button.dart';
 import '../bloc/true_false_bloc.dart';
 
 class TrueFalseResultsWidget extends StatelessWidget {
@@ -37,6 +39,15 @@ class TrueFalseResultsWidget extends StatelessWidget {
               itemCount: state.quizQuestions.length,
             ),
           ),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: BaseButton(
+                isInternetConnected: true,
+                isEnabled: true,
+                buttonColor: Colors.green,
+                onPressed: context.pop,
+                title: 'Done!'),
+          ))
         ],
       );
     });
