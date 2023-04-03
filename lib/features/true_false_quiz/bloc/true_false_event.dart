@@ -16,6 +16,7 @@ class NextQuestionEvent extends TrueFalseEvent {
 class AnswerOnQuestionEvent extends TrueFalseEvent {
   final int id;
   final bool answer;
+  final bool rightAnswer;
 
-  AnswerOnQuestionEvent({required this.id, required this.answer});
+  AnswerOnQuestionEvent({required this.id, required this.answer, required this.rightAnswer});
 }
