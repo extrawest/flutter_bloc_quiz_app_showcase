@@ -44,7 +44,7 @@ class OneAnswerState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions];
+  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions,rightAnswers,wrongAnswers];
 
   @override
   String toString() {
