@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/one_answer_quiz/view/one_answer_quiz_screen.dart';
 import '../features/true_false_quiz/view/true_false_quiz_screen.dart';
+import '../history_screen/view/history_screen.dart';
 import '../home_screen/view/home_screen.dart';
 import 'screens/error_screen.dart';
 
@@ -10,6 +11,7 @@ import 'screens/error_screen.dart';
 const String homeScreenRoute = '/home';
 const String trueFalseScreenRoute = '/trueFalse';
 const String oneAnswerScreenRoute = '/oneAnswer';
+const String historyScreenRoute = '/history';
 
 
 final goRouter = GoRouter(
@@ -36,6 +38,13 @@ final goRouter = GoRouter(
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
         child:  TrueFalseQuizScreen(),
+      ),
+    ),
+    GoRoute(
+      path: historyScreenRoute,
+      pageBuilder: (context, state) => _TransitionPage(
+        key: state.pageKey,
+        child:  const HistoryScreen(),
       ),
     ),
   ],
