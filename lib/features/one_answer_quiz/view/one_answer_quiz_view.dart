@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../common/widgets/base_button.dart';
+import '../../storage/data_models/quiz_result_model.dart';
+import '../../storage/quiz_storage_bloc.dart';
 import 'one_answer_result_widget.dart';
 
 class OneAnswerQuizView extends StatelessWidget {
@@ -34,6 +36,14 @@ class OneAnswerQuizView extends StatelessWidget {
       if (state.actualQuestion! < state.quizQuestions.length) {
         return OneAnswerQuizWidget(quiz: state.quizQuestions[state.actualQuestion!]);
       } else {
+        context.read<QuizStorageBloc>().add(QuizStorageWriteEvent(
+          savedQuiz: SavedQuiz(
+            date: DateTime.now().millisecondsSinceEpoch,
+            rightAnswers: state.rightAnswers,
+            wrongAnswers: state.wrongAnswers,
+            quizType: QuizType.oneAnswer,
+          ),
+        ));
         return const OneAnswerResultsWidget();
       }
     });
