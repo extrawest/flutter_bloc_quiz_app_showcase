@@ -1,4 +1,6 @@
 import 'package:bloc_quiz_training/features/true_false_quiz/bloc/true_false_bloc.dart';
+import 'package:bloc_quiz_training/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +11,7 @@ class TrueFalseQuizScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('True/False Quiz'),
+        title: Text(tr(LocaleKeys.true_false_quiz)),
         centerTitle: true,
       ),
       body: BlocProvider(
