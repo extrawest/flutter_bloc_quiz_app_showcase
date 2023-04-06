@@ -13,20 +13,30 @@ const Color darkerBlue = Color(0xff092e54);
 const Color textBlack = Color(0xff1C1C3B);
 const Color simpleGray = Color(0xffB3B3C9);
 
-class TextStyles {
-  static const notifierTextLabel = TextStyle(
-    fontSize: 26,
-    fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.w300,
-  );
-}
+const notifierTextLabel = TextStyle(
+  fontSize: 26,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w300,
+);
 
-final buttonText = TextStyle(
-  fontSize: 14,
-  color: blackShade,
-  fontFamily: GoogleFonts.poppins().fontFamily,
+const text = TextStyle(
+  fontSize: 18,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w300,
+);
+
+const buttonText = TextStyle(
+  fontSize: 20,
+  fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w600,
 );
+
+const drawerButtonText = TextStyle(
+  fontSize: 16,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w600,
+);
+
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
@@ -36,8 +46,7 @@ ThemeData darkTheme = ThemeData(
     primary: Colors.grey.shade200,
     background: blackShade,
   ),
-  floatingActionButtonTheme:
-      const FloatingActionButtonThemeData(foregroundColor: Colors.black),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(foregroundColor: Colors.black),
   dividerColor: Colors.black12,
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: const TextTheme(
@@ -52,11 +61,10 @@ ThemeData lightTheme = ThemeData(
   primaryColor: Colors.white,
   primarySwatch: Colors.blue,
   colorScheme: const ColorScheme.light(
-    primary: Colors.black54,
+    primary: Colors.black,
     background: greyShadeLight,
   ),
-  floatingActionButtonTheme:
-      const FloatingActionButtonThemeData(foregroundColor: Colors.white),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(foregroundColor: Colors.white),
   dividerColor: Colors.white54,
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: const TextTheme(
