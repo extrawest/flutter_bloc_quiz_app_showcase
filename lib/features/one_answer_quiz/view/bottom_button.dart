@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../../../generated/locale_keys.g.dart';
+import '../../theme/theme_info.dart';
 
 class BottomButton extends StatelessWidget {
   final String title;
@@ -11,15 +15,26 @@ class BottomButton extends StatelessWidget {
     return GestureDetector(
       onTap: callBack,
       child: Container(
-        height: 40,
+        height: 50,
         color: Colors.blue,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Expanded(
-              child: Center(child: Text('Tap to validate answer')),
+            Expanded(
+              flex: 3,
+              child: Center(
+                  child: Text(
+                tr(LocaleKeys.validate),
+                style: text,
+              )),
             ),
-            Expanded(child: Center(child: Text(title)))
+            Expanded(
+                flex: 2,
+                child: Center(
+                    child: Text(
+                  title,
+                  style: text,
+                )))
           ],
         ),
       ),
