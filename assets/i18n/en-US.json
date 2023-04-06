@@ -27,5 +27,23 @@
   "one_answer_quiz": "One Answer Quiz",
   "history": "History",
   "quiz_menu": "Quiz menu",
-  "settings": "Settings"
+  "settings": "Settings",
+  "true_false_description": "We invite you to take a quick quiz. Just choose «True» or «False». Once completed, you will be able to see the correct answers on the results screen.",
+  "one_answer_description": "We invite you to take a short quiz. First, choose an answer, then click the «Tap to validate answer» button. Once completed, you will be able to see the correct answers on the results screen.",
+  "true_key": "True",
+  "false_key": "False",
+  "something_went_wrong": "Something went wrong",
+  "are_you_ready": "Are you ready",
+  "go": "GO!",
+  "quiz_results": "Quiz Results",
+  "done": "Done",
+  "validate": "Tap to validate answer",
+  "validating": "Validating...",
+  "wrong_answers": "wrong answers",
+  "right_answers": "right answers",
+  "one_answer": "One Answer",
+  "true_false": "True-False",
+  "have_no_history": "You have no history",
+  "brightness_theme": "Theme"
+
 }
