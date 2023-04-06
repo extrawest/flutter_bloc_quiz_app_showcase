@@ -25,27 +25,16 @@ class DrawerWidget extends StatelessWidget {
             child: ColoredBox(
               color: blue,
               child: Padding(
-                padding: const EdgeInsets.only(top: 16,left: 16),
-                child: Text(tr(LocaleKeys.quiz_menu)),
+                padding: const EdgeInsets.only(top: 16, left: 16),
+                child: Text(tr(LocaleKeys.quiz_menu),style: buttonText,),
               ),
             ),
           ),
           ListTile(
-            title: Text(tr(LocaleKeys.true_false_quiz)),
-            onTap: () {
-              Navigator.pop(context);
-              context.push(trueFalseScreenRoute);
-            },
-          ),
-          ListTile(
-            title: Text(tr(LocaleKeys.one_answer_quiz)),
-            onTap: () {
-              Navigator.pop(context);
-              context.push(oneAnswerScreenRoute);
-            },
-          ),
-          ListTile(
-            title: Text(tr(LocaleKeys.history)),
+            title: Text(
+              tr(LocaleKeys.history),
+              style: drawerButtonText,
+            ),
             onTap: () {
               context.read<QuizStorageBloc>().add(QuizStorageReadEvent());
               Navigator.pop(context);
@@ -53,9 +42,13 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(tr(LocaleKeys.settings)),
+            title: Text(
+              tr(LocaleKeys.settings),
+              style: drawerButtonText,
+            ),
             onTap: () {
               Navigator.pop(context);
+              context.push(settingsScreenRoute);
             },
           ),
         ],
