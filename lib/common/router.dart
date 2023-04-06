@@ -1,17 +1,19 @@
+import 'package:bloc_quiz_training/features/settings_screen/view/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/history_screen/view/history_screen.dart';
 import '../features/one_answer_quiz/view/one_answer_quiz_screen.dart';
 import '../features/true_false_quiz/view/true_false_quiz_screen.dart';
-import '../history_screen/view/history_screen.dart';
-import '../home_screen/view/home_screen.dart';
 import 'screens/error_screen.dart';
+import 'screens/home_screen.dart';
 
 
 const String homeScreenRoute = '/home';
 const String trueFalseScreenRoute = '/trueFalse';
 const String oneAnswerScreenRoute = '/oneAnswer';
 const String historyScreenRoute = '/history';
+const String settingsScreenRoute = '/settings';
 
 
 final goRouter = GoRouter(
@@ -45,6 +47,13 @@ final goRouter = GoRouter(
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
         child:  const HistoryScreen(),
+      ),
+    ),
+    GoRoute(
+      path: settingsScreenRoute,
+      pageBuilder: (context, state) => _TransitionPage(
+        key: state.pageKey,
+        child:  const SettingsScreen(),
       ),
     ),
   ],
