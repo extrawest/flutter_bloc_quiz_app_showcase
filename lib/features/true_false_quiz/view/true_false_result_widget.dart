@@ -31,8 +31,7 @@ class TrueFalseResultsWidget extends StatelessWidget {
                   child: ListView.builder(
                     itemBuilder: (BuildContext context, int index) {
                       return QuizResult(
-                        isAnswerRight:
-                            state.quizQuestions[index].rightAnswer == state.answeredQuestions[index]['answer'],
+                        isAnswerRight: state.isAnswerRight(index),
                         question: state.quizQuestions[index].question!,
                       );
                     },
