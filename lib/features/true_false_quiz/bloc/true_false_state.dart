@@ -45,6 +45,10 @@ class TrueFalseState extends Equatable {
 
   @override
   List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions, rightAnswers, wrongAnswers];
+
+  bool isAnswerRight(int index) {
+    return quizQuestions[index].rightAnswer == answeredQuestions[index]['answer'];
+  }
 }
 
 class TrueFalseInitial extends TrueFalseState {}
