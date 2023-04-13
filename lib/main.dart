@@ -66,7 +66,7 @@ Future<void> main() async {
           create: (context) => QuizStorageBloc(quizBox)..add(QuizStorageReadEvent()),
         ),
       ],
-      child: _RepositoriesHolder(credentials, child: const Application()),
+      child: _RepositoriesHolder(credentials, child: const MaterialApp(home: SafeArea(child: Application()))),
     ),
   );
   // Setup of the services used in the application
