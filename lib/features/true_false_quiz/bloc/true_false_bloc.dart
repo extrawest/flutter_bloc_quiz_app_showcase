@@ -9,7 +9,7 @@ part 'true_false_event.dart';
 part 'true_false_state.dart';
 
 class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
-  final TrueFalseQuizRepositoryImpl trueFalseQuizRepository;
+  final TrueFalseQuizRepository trueFalseQuizRepository;
 
   TrueFalseBloc({required this.trueFalseQuizRepository}) : super(TrueFalseInitial()) {
     on<TrueFalseFetchEvent>(_onQuizQuestionFetched);
