@@ -5,9 +5,9 @@ import 'package:bloc_quiz_training/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:translator/translator.dart';
 
 import '../../theme/theme_info.dart';
+import '../cubit/true_false_translate_cubit.dart';
 
 class TrueFalseQuestionWidget extends StatefulWidget {
   final TrueFalseQuiz quiz;
@@ -29,19 +29,23 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
           children: [
             Expanded(
               child: FutureBuilder(
-                  future: getQuestion(Localizations.localeOf(context).languageCode, widget.quiz.question),
+                  future: context
+                      .read<TrueFalseTranslateCubit>()
+                      .translateQuestion(Localizations.localeOf(context).languageCode, widget.quiz.question),
                   builder: (context, asyncSnap) {
-                    if (asyncSnap.hasData) {
-                      return Center(
-                          child: Text(
-                        asyncSnap.data!,
-                        style: text,
-                      ));
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
+                    return Center(
+                        child: BlocBuilder<TrueFalseTranslateCubit, TrueFalseTranslateState>(builder: (context, state) {
+                      if (state is TrueFalseTranslated) {
+                        return Text(
+                          state.translatedQuestion,
+                          style: text,
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }));
                   }),
             ),
             Row(
@@ -58,6 +62,7 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                           ..add(AnswerOnQuestionEvent(
                               id: widget.quiz.id!, answer: true, rightAnswer: widget.quiz.rightAnswer!))
                           ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
+                        context.read<TrueFalseTranslateCubit>().setInitial();
                       },
                       titleColor: Theme.of(context).colorScheme.primary,
                       title: tr(LocaleKeys.true_key)),
@@ -75,6 +80,7 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                           ..add(AnswerOnQuestionEvent(
                               id: widget.quiz.id!, answer: false, rightAnswer: widget.quiz.rightAnswer!))
                           ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
+                        context.read<TrueFalseTranslateCubit>().setInitial();
                       },
                       titleColor: Theme.of(context).colorScheme.primary,
                       title: tr(LocaleKeys.false_key)),
@@ -85,21 +91,5 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
         ),
       ),
     );
-  }
-
-  Future<String> getQuestion(String langCode, String? question) async {
-    if (question != null) {
-      String tempQuestion = question;
-      if (langCode == 'uk') {
-        await GoogleTranslator().translate(question, from: 'en', to: 'uk').then((value) {
-          tempQuestion = value.text;
-        });
-        return tempQuestion;
-      } else {
-        return question;
-      }
-    } else {
-      return tr(LocaleKeys.something_went_wrong);
-    }
   }
 }
