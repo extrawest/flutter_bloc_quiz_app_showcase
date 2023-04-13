@@ -1,6 +1,5 @@
 part of 'one_answer_cubit.dart';
 
-@immutable
 abstract class OneAnswerCubitState extends Equatable{
   final int? index;
   const OneAnswerCubitState({this.index});

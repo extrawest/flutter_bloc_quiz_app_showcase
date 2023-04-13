@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'one_answer_state.dart';
+part 'one_answer_cubit_state.dart';
 
 class OneAnswerCubit extends Cubit<OneAnswerCubitState> {
   OneAnswerCubit() : super(const OneAnswerButtonInitial());
