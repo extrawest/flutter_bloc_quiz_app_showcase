@@ -6,6 +6,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../repositories/one_answer_quiz_repository.dart';
+
 class OneAnswerQuizScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class OneAnswerQuizScreen extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (_) =>
-                  OneAnswerBloc(oneAnswerQuizRepository: RepositoryProvider.of(context))..add(OneAnswerFetchEvent())),
+                  OneAnswerBloc(oneAnswerQuizRepository: RepositoryProvider.of<OneAnswerQuizRepositoryImpl>(context))..add(OneAnswerFetchEvent())),
           BlocProvider(
             create: (context) => OneAnswerCubit(),
           )
