@@ -64,8 +64,8 @@ void main() {
       act: (bloc) => bloc
         ..add(OneAnswerFetchEvent())
         ..add(AnswerOnQuestionEvent(id: 0, answer: 'answer4', rightAnswer: 'answer'))
-        ..add(NextQuestionEvent(null))
-        ..add(NextQuestionEvent(0)),
+        ..add(NextQuestionEvent())
+        ..add(NextQuestionEvent()),
       expect: () => [
         loadedState.copyWith(quizQuestions: [quiz1, quiz2]),
         answeredState.copyWith(

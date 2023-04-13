@@ -44,11 +44,15 @@ class OneAnswerState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions,rightAnswers,wrongAnswers];
+  List<Object?> get props => [status, quizQuestions, actualQuestion, answeredQuestions, rightAnswers, wrongAnswers];
 
   @override
   String toString() {
     return 'OneAnswerState{status: $status, quizQuestions: $quizQuestions, errorMessage: $errorMessage}';
+  }
+
+  bool isAnswerRight(int index) {
+    return quizQuestions[index].rightAnswer == answeredQuestions[index]['answer'];
   }
 }
 

@@ -9,7 +9,7 @@ part 'one_answer_event.dart';
 part 'one_answer_state.dart';
 
 class OneAnswerBloc extends Bloc<OneAnswerEvent, OneAnswerState> {
-  final OneAnswerQuizRepositoryImpl oneAnswerQuizRepository;
+  final OneAnswerQuizRepository oneAnswerQuizRepository;
 
   OneAnswerBloc({required this.oneAnswerQuizRepository}) : super(OneAnswerInitial()) {
     on<OneAnswerFetchEvent>(_onQuizQuestionFetched);
@@ -45,13 +45,13 @@ class OneAnswerBloc extends Bloc<OneAnswerEvent, OneAnswerState> {
   }
 
   Future<void> _nextQuestion(NextQuestionEvent event, Emitter<OneAnswerState> emit) async {
-    if (event.actualQuestion == null) {
+    if (state.actualQuestion == null) {
       emit(
         state.copyWith(actualQuestion: 0),
       );
     } else {
       emit(
-        state.copyWith(actualQuestion: event.actualQuestion! + 1),
+        state.copyWith(actualQuestion: state.actualQuestion! + 1),
       );
     }
   }
