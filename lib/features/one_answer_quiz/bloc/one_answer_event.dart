@@ -8,9 +8,7 @@ abstract class OneAnswerEvent extends Equatable {
 class OneAnswerFetchEvent extends OneAnswerEvent {}
 
 class NextQuestionEvent extends OneAnswerEvent {
-  final int? actualQuestion;
-
-  NextQuestionEvent(this.actualQuestion);
+  NextQuestionEvent();
 }
 
 class AnswerOnQuestionEvent extends OneAnswerEvent {
@@ -20,5 +18,5 @@ class AnswerOnQuestionEvent extends OneAnswerEvent {
 
   AnswerOnQuestionEvent({required this.id, required this.answer, required this.rightAnswer});
   @override
-  List<Object> get props => [id,answer,rightAnswer];
+  List<Object> get props => [id, answer, rightAnswer];
 }
