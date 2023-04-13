@@ -26,7 +26,7 @@ const text = TextStyle(
 );
 
 const buttonText = TextStyle(
-  fontSize: 20,
+  fontSize: 16,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w600,
 );
