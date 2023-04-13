@@ -39,7 +39,7 @@ class OneAnswerQuizView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: BaseButton(
-                      onPressed: () => context.read<OneAnswerBloc>().add(NextQuestionEvent(state.actualQuestion)),
+                      onPressed: () => context.read<OneAnswerBloc>().add(NextQuestionEvent()),
                       isInternetConnected: true,
                       isEnabled: true,
                       buttonColor: Colors.green,
