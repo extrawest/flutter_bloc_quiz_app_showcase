@@ -39,7 +39,7 @@ class TrueFalseQuizView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: BaseButton(
-                      onPressed: () => context.read<TrueFalseBloc>().add(NextQuestionEvent(state.actualQuestion)),
+                      onPressed: () => context.read<TrueFalseBloc>().add(NextTrueFalseQuestionEvent(state.actualQuestion)),
                       isInternetConnected: true,
                       isEnabled: true,
                       titleColor: Theme.of(context).colorScheme.primary,

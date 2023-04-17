@@ -63,9 +63,9 @@ void main() {
       verify: (_) => verify(trueFalseRepository.fetchOneAnswerQuiz()).called(1),
       act: (bloc) => bloc
         ..add(TrueFalseFetchEvent())
-        ..add(AnswerOnQuestionEvent(id: 0, answer: true, rightAnswer: false))
-        ..add(NextQuestionEvent(null))
-        ..add(NextQuestionEvent(0)),
+        ..add(AnswerOnTrueFalseQuestionEvent(id: 0, answer: true, rightAnswer: false))
+        ..add(NextTrueFalseQuestionEvent(null))
+        ..add(NextTrueFalseQuestionEvent(0)),
       expect: () => [
         loadedState.copyWith(quizQuestions: [quiz1, quiz2]),
         answeredState.copyWith(

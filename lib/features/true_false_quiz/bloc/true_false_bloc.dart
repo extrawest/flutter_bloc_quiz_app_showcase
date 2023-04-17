@@ -13,8 +13,8 @@ class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
 
   TrueFalseBloc({required this.trueFalseQuizRepository}) : super(TrueFalseInitial()) {
     on<TrueFalseFetchEvent>(_onQuizQuestionFetched);
-    on<AnswerOnQuestionEvent>(_answeredOnQuestion);
-    on<NextQuestionEvent>(_nextQuestion);
+    on<AnswerOnTrueFalseQuestionEvent>(_answeredOnQuestion);
+    on<NextTrueFalseQuestionEvent>(_nextQuestion);
   }
 
   Future<void> _onQuizQuestionFetched(TrueFalseFetchEvent event, Emitter<TrueFalseState> emit) async {
@@ -43,7 +43,7 @@ class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
     }
   }
 
-  Future<void> _nextQuestion(NextQuestionEvent event, Emitter<TrueFalseState> emit) async {
+  Future<void> _nextQuestion(NextTrueFalseQuestionEvent event, Emitter<TrueFalseState> emit) async {
     if (event.actualQuestion == null) {
       emit(
         state.copyWith(actualQuestion: 0),
@@ -55,7 +55,7 @@ class TrueFalseBloc extends Bloc<TrueFalseEvent, TrueFalseState> {
     }
   }
 
-  Future<void> _answeredOnQuestion(AnswerOnQuestionEvent event, Emitter<TrueFalseState> emit) async {
+  Future<void> _answeredOnQuestion(AnswerOnTrueFalseQuestionEvent event, Emitter<TrueFalseState> emit) async {
     final isRightAnswer = event.answer == event.rightAnswer;
     emit(state.copyWith(
         rightAnswers: isRightAnswer ? state.rightAnswers + 1 : state.rightAnswers,

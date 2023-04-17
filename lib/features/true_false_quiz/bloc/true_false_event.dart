@@ -7,16 +7,16 @@ abstract class TrueFalseEvent extends Equatable {
 
 class TrueFalseFetchEvent extends TrueFalseEvent {}
 
-class NextQuestionEvent extends TrueFalseEvent {
+class NextTrueFalseQuestionEvent extends TrueFalseEvent {
   final int? actualQuestion;
 
-  NextQuestionEvent(this.actualQuestion);
+  NextTrueFalseQuestionEvent(this.actualQuestion);
 }
 
-class AnswerOnQuestionEvent extends TrueFalseEvent {
+class AnswerOnTrueFalseQuestionEvent extends TrueFalseEvent {
   final int id;
   final bool answer;
   final bool rightAnswer;
 
-  AnswerOnQuestionEvent({required this.id, required this.answer, required this.rightAnswer});
+  AnswerOnTrueFalseQuestionEvent({required this.id, required this.answer, required this.rightAnswer});
 }

@@ -59,9 +59,9 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                       buttonColor: Colors.green,
                       onPressed: () {
                         context.read<TrueFalseBloc>()
-                          ..add(AnswerOnQuestionEvent(
+                          ..add(AnswerOnTrueFalseQuestionEvent(
                               id: widget.quiz.id!, answer: true, rightAnswer: widget.quiz.rightAnswer!))
-                          ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
+                          ..add(NextTrueFalseQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
                         context.read<TrueFalseTranslateCubit>().setInitial();
                       },
                       titleColor: Theme.of(context).colorScheme.primary,
@@ -77,9 +77,9 @@ class _TrueFalseQuestionWidgetState extends State<TrueFalseQuestionWidget> {
                       buttonColor: Colors.red,
                       onPressed: () {
                         context.read<TrueFalseBloc>()
-                          ..add(AnswerOnQuestionEvent(
+                          ..add(AnswerOnTrueFalseQuestionEvent(
                               id: widget.quiz.id!, answer: false, rightAnswer: widget.quiz.rightAnswer!))
-                          ..add(NextQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
+                          ..add(NextTrueFalseQuestionEvent(context.read<TrueFalseBloc>().state.actualQuestion));
                         context.read<TrueFalseTranslateCubit>().setInitial();
                       },
                       titleColor: Theme.of(context).colorScheme.primary,
