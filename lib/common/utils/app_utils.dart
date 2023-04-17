@@ -70,4 +70,4 @@ Iterable<E> indexedMap<E, T>(Iterable<T> items, E Function(int index, T item) f)
   }
 }
 
-DateFormat dateFormat = DateFormat('dd.MM.yyyy HH:mm');
+DateFormat dateFormat = DateFormat('dd.MM.yyyy\nHH:mm');
