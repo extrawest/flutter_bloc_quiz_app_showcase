@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../common/widgets/base_button.dart';
-import '../../../common/widgets/quiz_result.dart';
-import '../../../generated/locale_keys.g.dart';
+import '../../../../common/widgets/base_button.dart';
+import '../../../../common/widgets/quiz_result.dart';
+import '../../../../generated/locale_keys.g.dart';
 
 class OneAnswerResultsWidget extends StatelessWidget {
   const OneAnswerResultsWidget({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../generated/locale_keys.g.dart';
-import '../../theme/theme_info.dart';
+import '../../../../generated/locale_keys.g.dart';
+import '../../../theme/theme_info.dart';
 
 class BottomButton extends StatelessWidget {
   final String title;

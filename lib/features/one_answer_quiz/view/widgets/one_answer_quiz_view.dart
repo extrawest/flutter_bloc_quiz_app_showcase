@@ -1,14 +1,14 @@
 import 'package:bloc_quiz_training/features/one_answer_quiz/bloc/one_answer_bloc.dart';
-import 'package:bloc_quiz_training/features/one_answer_quiz/view/one_answer_quiz_widget.dart';
+import 'package:bloc_quiz_training/features/one_answer_quiz/view/widgets/one_answer_quiz_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../common/widgets/base_button.dart';
-import '../../../generated/locale_keys.g.dart';
-import '../../storage/data_models/quiz_result_model.dart';
-import '../../storage/quiz_storage_bloc.dart';
-import '../../theme/theme_info.dart';
+import '../../../../common/widgets/base_button.dart';
+import '../../../../generated/locale_keys.g.dart';
+import '../../../storage/data_models/quiz_result_model.dart';
+import '../../../storage/quiz_storage_bloc.dart';
+import '../../../theme/theme_info.dart';
 import 'one_answer_result_widget.dart';
 
 class OneAnswerQuizView extends StatelessWidget {
