@@ -1,15 +1,15 @@
-import 'package:bloc_quiz_training/features/true_false_quiz/view/true_false_result_widget.dart';
-import 'package:bloc_quiz_training/features/true_false_quiz/view/true_false_widget.dart';
+import 'package:bloc_quiz_training/features/true_false_quiz/view/widgets/true_false_result_widget.dart';
+import 'package:bloc_quiz_training/features/true_false_quiz/view/widgets/true_false_widget.dart';
 import 'package:bloc_quiz_training/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../common/widgets/base_button.dart';
-import '../../storage/data_models/quiz_result_model.dart';
-import '../../storage/quiz_storage_bloc.dart';
-import '../../theme/theme_info.dart';
-import '../bloc/true_false_bloc.dart';
+import '../../../../common/widgets/base_button.dart';
+import '../../../storage/data_models/quiz_result_model.dart';
+import '../../../storage/quiz_storage_bloc.dart';
+import '../../../theme/theme_info.dart';
+import '../../bloc/true_false_bloc.dart';
 
 class TrueFalseQuizView extends StatelessWidget {
   const TrueFalseQuizView({Key? key}) : super(key: key);

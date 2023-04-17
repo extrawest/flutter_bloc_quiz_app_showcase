@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../common/widgets/base_button.dart';
-import '../bloc/true_false_bloc.dart';
+import '../../../../common/widgets/base_button.dart';
+import '../../bloc/true_false_bloc.dart';
 
 class TrueFalseResultsWidget extends StatelessWidget {
   const TrueFalseResultsWidget({Key? key}) : super(key: key);
