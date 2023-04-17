@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/history_screen/view/history_screen.dart';
-import '../features/one_answer_quiz/view/one_answer_quiz_screen.dart';
+import '../features/one_answer_quiz/view/screens/one_answer_quiz_screen.dart';
 import '../features/true_false_quiz/view/true_false_quiz_screen.dart';
 import 'screens/error_screen.dart';
 import 'screens/home_screen.dart';
@@ -25,35 +25,35 @@ final goRouter = GoRouter(
       path: homeScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: const HomeScreen(),
+        child: const SafeArea(child: HomeScreen()),
       ),
     ),
     GoRoute(
       path: oneAnswerScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: OneAnswerQuizScreen(),
+        child: SafeArea(child: OneAnswerQuizScreen()),
       ),
     ),
     GoRoute(
       path: trueFalseScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child:  TrueFalseQuizScreen(),
+        child:  SafeArea(child: TrueFalseQuizScreen()),
       ),
     ),
     GoRoute(
       path: historyScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child:  const HistoryScreen(),
+        child:  const SafeArea(child: HistoryScreen()),
       ),
     ),
     GoRoute(
       path: settingsScreenRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child:  const SettingsScreen(),
+        child:  const SafeArea(child: SettingsScreen()),
       ),
     ),
   ],

@@ -66,7 +66,7 @@ Future<void> main() async {
           create: (context) => QuizStorageBloc(quizBox)..add(QuizStorageReadEvent()),
         ),
       ],
-      child: _RepositoriesHolder(credentials, child: const MaterialApp(home: SafeArea(child: Application()))),
+      child: _RepositoriesHolder(credentials, child: const Application()),
     ),
   );
   // Setup of the services used in the application
@@ -109,9 +109,6 @@ class _RepositoriesHolder extends StatelessWidget {
             ),
           ),
         ),
-        // RepositoryProvider.value(
-        //   value: ApiClientImpl(apiDomain: credentials.apiDomain),
-        // ),
       ],
       child: Builder(builder: (context) => child),
     );
