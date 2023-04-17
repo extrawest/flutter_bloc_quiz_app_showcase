@@ -5,8 +5,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../repositories/true_false_quiz_repository.dart';
-import 'true_false_quiz_view_widget.dart';
+import '../../repositories/true_false_quiz_repository.dart';
+import '../widgets/true_false_quiz_view_widget.dart';
 
 class TrueFalseQuizScreen extends StatelessWidget {
   @override
