@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/history_screen/view/history_screen.dart';
 import '../features/one_answer_quiz/view/screens/one_answer_quiz_screen.dart';
-import '../features/true_false_quiz/view/true_false_quiz_screen.dart';
+import '../features/true_false_quiz/view/screens/true_false_quiz_screen.dart';
 import 'screens/error_screen.dart';
 import 'screens/home_screen.dart';
 
