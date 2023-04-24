@@ -1,8 +1,21 @@
-# Simple Quiz App (BloC)
+# Simple Quiz App
+
+
+[![Maintaner](https://img.shields.io/static/v1?label=Maksym%Ostrovyi&message=Maintainer&color=red)](mailto:maksym.ostrovyj@extrawest.com)
+![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
 
 ## PROJECT INFO
 
-- **Bloc Quiz App works with Flutter v3.7.6**.
+- **Bloc Quiz App based on Flutter v3.7.6**.
+- **App works on Android and iOS**.
+
+## Features
+
+- One Answer Quiz
+- True-False Quiz
+- The results of quizzes are stored on the device
+- Light/Dark theme switching (manual and auto)
+- English and Ukrainian languages implemented (depends on system language)
 
 ### Installing
 
@@ -18,13 +31,37 @@ Create `config_production.json` inside the `assets` folder with the following st
 
 ```json
 {
-  "appName": "",
-  "baseApiUrl": ""
+  "appName": "Bloc Quiz App",
+  "apiDomain": "https://run.mocky.io/v3"
 }
 ```
 
-- Value for `appName` should be 'APP_NAME' respectively
-- Value for `apiDomain` can be obtained on the backend
+## RUN THE APP IN DEVELOPMENT OR PRODUCTION MODE
+
+App supports 2 flavors: `dev` and `prod`.
+
+To use flavor value in app, use next function
+
+To use flavor value in app, use next function
+
+```dart
+Future<String?> getFlavor()
+```
+
+In order to run in production mode provide an additional `--flavor=prod` argument to the run
+command:
+
+```shell
+flutter run --flavor=prod
+```
+
+Important! To create the production build of the app you should also provider an
+additional `--flavor=prod` argument:
+
+```shell
+flutter build ipa --flavor=prod
+```
+
 
 
 ##### DEVELOPMENT
@@ -52,4 +89,12 @@ flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart --sourc
 ```shell
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
+
+## Testing
+
+To run test run the following command in the terminal
+```shell
+flutter test test
+```
+
 
