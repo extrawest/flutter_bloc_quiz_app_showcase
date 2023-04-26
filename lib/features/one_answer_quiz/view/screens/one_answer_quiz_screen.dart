@@ -1,3 +1,4 @@
+import 'package:bloc_quiz_training/common/widgets/alert_dialog.dart';
 import 'package:bloc_quiz_training/features/one_answer_quiz/bloc/one_answer_bloc.dart';
 import 'package:bloc_quiz_training/features/one_answer_quiz/cubit/one_answer_cubit.dart';
 import 'package:bloc_quiz_training/features/one_answer_quiz/view/widgets/one_answer_quiz_view.dart';
@@ -17,40 +18,55 @@ class OneAnswerQuizScreen extends StatelessWidget {
               create: (_) =>
                   OneAnswerBloc(oneAnswerQuizRepository: RepositoryProvider.of<OneAnswerQuizRepositoryImpl>(context))..add(OneAnswerFetchEvent())),
           BlocProvider(
-            create: (context) => OneAnswerCubit(),
+            create: (_) => OneAnswerCubit(),
           )
         ],
-        child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            leading: BlocBuilder<OneAnswerCubit, OneAnswerCubitState>(
+        child: WillPopScope(
+          onWillPop: () => Future.value(false),
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              leading: BlocBuilder<OneAnswerBloc, OneAnswerState>(
+                builder: (context, state) {
+                  return IconButton(
+                    onPressed: () {
+                      if (state.answeredQuestions.isEmpty) {
+                        context.read<OneAnswerCubit>().initial();
+                        Navigator.pop(context);
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (_) {
+                            return BlocProvider.value(
+                              value: BlocProvider.of<OneAnswerCubit>(context),
+                              child: AlertDialogWidget(callback: () => context.read<OneAnswerCubit>().initial()),
+                            );
+                          },
+                        );
+                      }
+                    },
+                    icon: const Icon(Icons.arrow_back_rounded),
+                  );
+                },
+              ),
+              title: Text(tr(LocaleKeys.one_answer_quiz)),
+              automaticallyImplyLeading: false,
+            ),
+            body: BlocBuilder<OneAnswerBloc, OneAnswerState>(
               builder: (context, state) {
-                return IconButton(
-                  onPressed: () {
-                    context.read<OneAnswerCubit>().initial();
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_rounded),
-                );
+                switch (state.status) {
+                  case OneAnswerStatus.failure:
+                    return const Center(child: Text('failed to fetch questions'));
+                  case OneAnswerStatus.success:
+                    if (state.quizQuestions.isEmpty) {
+                      return const Center(child: Text('no questions'));
+                    }
+                    return const OneAnswerQuizView();
+                  default:
+                    return const Center(child: CircularProgressIndicator());
+                }
               },
             ),
-            title: Text(tr(LocaleKeys.one_answer_quiz)),
-            automaticallyImplyLeading: false,
-          ),
-          body: BlocBuilder<OneAnswerBloc, OneAnswerState>(
-            builder: (context, state) {
-              switch (state.status) {
-                case OneAnswerStatus.failure:
-                  return const Center(child: Text('failed to fetch questions'));
-                case OneAnswerStatus.success:
-                  if (state.quizQuestions.isEmpty) {
-                    return const Center(child: Text('no questions'));
-                  }
-                  return const OneAnswerQuizView();
-                default:
-                  return const Center(child: CircularProgressIndicator());
-              }
-            },
           ),
         ));
   }
