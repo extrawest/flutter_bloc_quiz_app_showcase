@@ -1,8 +1,12 @@
 # Simple Quiz App
 
 
-[![Maintaner](https://img.shields.io/static/v1?label=Maksym%Ostrovyi&message=Maintainer&color=red)](mailto:maksym.ostrovyj@extrawest.com)
+[![Maintainer](https://img.shields.io/static/v1?label=Maksym Ostrovyi&message=Maintainer&color=red)](mailto:maksym.ostrovyj@extrawest.com)
+[![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
 ![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
+![Supported Programs](https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web%20%20-blue.svg?logo=flutter)
+[![View DEMO](https://img.shields.io/badge/VIEW-DEMO-lightgreen.svg)](https://glowing-pixie-a925de.netlify.app/)
 
 ## PROJECT INFO
 
@@ -16,6 +20,9 @@
 - The results of quizzes are stored on the device
 - Light/Dark theme switching (manual and auto)
 - English and Ukrainian languages implemented (depends on system language)
+
+## Demo
+https://glowing-pixie-a925de.netlify.app/
 
 ### Installing
 
