@@ -59,7 +59,11 @@ class CodegenLoader extends AssetLoader{
   "one_answer": "Одна відповідь",
   "true_false": "Правда-Брехня",
   "have_no_history": "У вас щє немає історії",
-  "brightness_theme": "Тема"
+  "brightness_theme": "Тема",
+  "attention": "Увага!",
+  "you_will_lose": "Ви втратите усесь прогрес, якщо вийдете зараз",
+  "cansel": "Відміна",
+  "continu": "Вийти"
 };
 static const Map<String,dynamic> en_US = {
   "app_bar": {
@@ -95,7 +99,7 @@ static const Map<String,dynamic> en_US = {
   "true_key": "True",
   "false_key": "False",
   "something_went_wrong": "Something went wrong",
-  "are_you_ready": "Are you ready",
+  "are_you_ready": "Are you ready?",
   "go": "GO!",
   "quiz_results": "Quiz Results",
   "done": "Done",
@@ -106,7 +110,11 @@ static const Map<String,dynamic> en_US = {
   "one_answer": "One Answer",
   "true_false": "True-False",
   "have_no_history": "You have no history",
-  "brightness_theme": "Theme"
+  "brightness_theme": "Theme",
+  "attention": "Attention!",
+  "you_will_lose": "If you exit now, you will lose all progress",
+  "cansel": "Cancel",
+  "continu": "Continue"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};
 }

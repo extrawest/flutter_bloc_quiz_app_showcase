@@ -44,6 +44,10 @@
   "one_answer": "One Answer",
   "true_false": "True-False",
   "have_no_history": "You have no history",
-  "brightness_theme": "Theme"
+  "brightness_theme": "Theme",
+  "attention":"Attention!",
+  "you_will_lose": "If you exit now, you will lose all progress",
+  "cansel": "Cancel",
+  "continu": "Continue"
 
 }

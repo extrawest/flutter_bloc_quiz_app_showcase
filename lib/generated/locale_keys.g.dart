@@ -38,5 +38,9 @@ abstract class  LocaleKeys {
   static const true_false = 'true_false';
   static const have_no_history = 'have_no_history';
   static const brightness_theme = 'brightness_theme';
+  static const attention = 'attention';
+  static const you_will_lose = 'you_will_lose';
+  static const cansel = 'cansel';
+  static const continu = 'continu';
 
 }
