@@ -29,7 +29,7 @@ class _OneAnswerQuizWidgetState extends State<OneAnswerQuizWidget> with SingleTi
 
     controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
 
-    offset = Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero)
+    offset = Tween<Offset>(begin: const Offset(0.0, 2.0), end: Offset.zero)
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeInOut));
   }
 
