@@ -3,7 +3,9 @@ import 'package:bloc_quiz_training/common/services/credentials_loader.dart';
 import 'package:bloc_quiz_training/common/utils/app_utils.dart';
 import 'package:bloc_quiz_training/features/theme/bloc/theme_bloc.dart';
 import 'package:bloc_quiz_training/features/theme/theme_info.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,15 +111,19 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
-        return MaterialApp.router(
-          title: 'Flutter BLoC Starter',
-          routerConfig: goRouter,
-          darkTheme: darkTheme,
-          theme: state.themeData,
-          themeMode: state.themeMode,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+        return DevicePreview(
+          enabled: kIsWeb,
+          builder: (context) => MaterialApp.router(
+            useInheritedMediaQuery: true,
+            title: 'Simple Quiz',
+            routerConfig: goRouter,
+            darkTheme: darkTheme,
+            theme: state.themeData,
+            themeMode: state.themeMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+          ),
         );
       },
     );
