@@ -1,7 +1,6 @@
 # Simple Quiz App
 
 
-[![Maintainer](https://img.shields.io/static/v1?label=Maksym Ostrovyi&message=Maintainer&color=red)](mailto:maksym.ostrovyj@extrawest.com)
 [![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
 ![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
@@ -23,6 +22,8 @@
 
 ## Demo
 https://glowing-pixie-a925de.netlify.app/
+https://user-images.githubusercontent.com/64004849/234834046-db0f39f4-0b45-47d4-9603-527f4b26fc58.mp4
+
 
 ### Installing
 
