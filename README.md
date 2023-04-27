@@ -11,7 +11,7 @@
 ## PROJECT INFO
 
 - **Bloc Quiz App based on Flutter v3.7.6**.
-- **App works on Android and iOS**.
+- **App works on Android, iOS and WEB**.
 
 ## Features
 
@@ -55,19 +55,37 @@ To use flavor value in app, use next function
 Future<String?> getFlavor()
 ```
 
-In order to run in production mode provide an additional `--flavor=prod` argument to the run
+In order to run in production mode provide an additional flavor argument to the run
 command:
 
+- For Android/IOS:  `--flavor=prod`
+
 ```shell
-flutter run --flavor=prod
+flutter run --falvor=prod
 ```
+
+- For Web: `--dart-define FLAVOR=prod`
+
+```shell
+flutter run --dart-define FLAVOR=prod
+```
+
 
 Important! To create the production build of the app you should also provider an
-additional `--flavor=prod` argument:
+additional flavor argument:
+
+- For Android/IOS:  `--flavor=prod`
 
 ```shell
-flutter build ipa --flavor=prod
+flutter build ipa/apk --flavor=prod
 ```
+
+- For Web: `--dart-define FLAVOR=prod`
+
+```shell
+flutter build web --dart-define FLAVOR=prod
+```
+
 
 
 
