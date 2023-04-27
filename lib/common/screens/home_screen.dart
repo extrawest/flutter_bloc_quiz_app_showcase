@@ -5,10 +5,9 @@ import 'package:bloc_quiz_training/features/theme/theme.dart';
 import 'package:bloc_quiz_training/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/theme/bloc/theme_bloc.dart';
+import '../widgets/drawer_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late AnimationController _controller;
   Animation<double>? animation;
   double? opacity;
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   void initState() {
@@ -37,18 +37,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         }
       });
 
-    animation =
-        Tween<double>(begin: 0.0, end: 1).animate(CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn));
-
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
+    animation = Tween<double>(begin: 0.0, end: 1).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastOutSlowIn,
+    ));
     Future.delayed(const Duration(milliseconds: 400), () {
       _controller.forward();
     });
-    super.didChangeDependencies();
+    super.initState();
   }
 
   @override
@@ -60,42 +56,56 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: const DrawerWidget(),
       backgroundColor: blue,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Image.asset(
-                quizLogo,
-              ),
-            ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ButtonWidget(
-                  buttonTitle: tr(LocaleKeys.true_false_quiz),
-                  opacity: opacity,
-                  animation: animation,
-                  onTap: () {
-                    context.go(pagesRoute);
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Image.asset(
+                    quizLogo,
+                  ),
                 ),
-                const SizedBox(
-                  height: 8,
+                Column(
+                  children: [
+                    ButtonWidget(
+                      buttonTitle: tr(LocaleKeys.true_false_quiz),
+                      opacity: opacity,
+                      animation: animation,
+                      onTap: () {
+                        context.push(trueFalseScreenRoute);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    ButtonWidget(
+                      buttonTitle: tr(LocaleKeys.one_answer_quiz),
+                      opacity: opacity,
+                      animation: animation,
+                      onTap: () {
+                        context.push(oneAnswerScreenRoute);
+                      },
+                    ),
+                  ],
                 ),
-                ButtonWidget(
-                  buttonTitle: tr(LocaleKeys.one_answer_quiz),
-                  opacity: opacity,
-                  animation: animation,
-                  onTap: () {
-                    context.go(pagesRoute);
-                  },
-                ),
+                Container()
               ],
             ),
-            Container()
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: IconButton(
+                  onPressed: () {
+                    _key.currentState?.openDrawer();
+                  },
+                  icon: const Icon(Icons.menu)),
+            )
           ],
         ),
       ),
