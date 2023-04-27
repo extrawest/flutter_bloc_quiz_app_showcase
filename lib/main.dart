@@ -113,6 +113,7 @@ class Application extends StatelessWidget {
       builder: (context, state) {
         return DevicePreview(
           enabled: kIsWeb,
+          isToolbarVisible: false,
           builder: (context) => MaterialApp.router(
             useInheritedMediaQuery: true,
             title: 'Simple Quiz',
